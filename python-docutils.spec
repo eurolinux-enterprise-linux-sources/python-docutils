@@ -11,7 +11,7 @@
 
 Name:           python-%{srcname}
 Version:        0.11
-Release:        0.2.20130715svn7687%{?dist}
+Release:        0.3.20130715svn7687%{?dist}
 Summary:        System for processing plaintext documentation
 
 Group:          Development/Languages
@@ -25,6 +25,10 @@ URL:            http://docutils.sourceforge.net
 # python setup.py sdist
 # The tarball is in dist/docutils-VERSION.tar.gz
 Source0:        %{srcname}-%{version}.tar.gz
+
+# Fix spurious table column alignment errors.
+# Fixed upstream: https://sourceforge.net/p/docutils/code/7898/
+Patch1: fix-spurious-table-column-alignment-errors.patch
 
 # Disable some tests known to fail with Python 3.3
 # Bug reports filed upstream as:
@@ -80,6 +84,7 @@ This package contains the module, ported to run under python3.
 
 %prep
 %setup -q -n %{srcname}-%{version}
+%patch1 -p1
 %patch100 -p1 -b .disable-failing-tests
 
 # Remove shebang from library files
@@ -161,6 +166,10 @@ rm -rf %{buildroot}
 %endif
 
 %changelog
+* Tue Oct 10 2017 Charalampos Stratakis <cstratak@redhat.com> - 0.11-0.3.20130715svn7687
+- Fix spurious table column alignment errors.
+Resolves: rhbz#1479804
+
 * Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 0.11-0.2.20130715svn7687
 - Mass rebuild 2013-12-27
 
