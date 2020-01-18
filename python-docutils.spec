@@ -11,7 +11,7 @@
 
 Name:           python-%{srcname}
 Version:        0.11
-Release:        0.1.20130715svn7687%{?dist}
+Release:        0.2.20130715svn7687%{?dist}
 Summary:        System for processing plaintext documentation
 
 Group:          Development/Languages
@@ -161,6 +161,9 @@ rm -rf %{buildroot}
 %endif
 
 %changelog
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 0.11-0.2.20130715svn7687
+- Mass rebuild 2013-12-27
+
 * Mon Jul 15 2013 Matej Stuchlik <mstuchli@redhat.com> - 0.11-0.1.20130715svn7687
 - Rebased to new snapshot
 - Removed unnecessary patches
